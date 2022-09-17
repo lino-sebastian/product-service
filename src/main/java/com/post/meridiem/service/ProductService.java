@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class ProductService {
 
     public List<Products> getProducts(){
         HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<List<Products>> httpEntity = new HttpEntity<>(headers);
         return restTemplate.exchange(productMockURL, HttpMethod.GET, httpEntity, List.class).getBody();
     }
